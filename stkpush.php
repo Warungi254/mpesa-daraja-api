@@ -41,13 +41,13 @@ $data_string = json_encode($curl_post_data);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
-echo $curl_response = curl_exec($curl);
+$curl_response = curl_exec($curl);
 //ECHO  RESPONSE
 $data = json_decode($curl_response);
 $CheckoutRequestID = $data->CheckoutRequestID;
 $ResponseCode = $data->ResponseCode;
 if ($ResponseCode == "0") {
- // echo "The CheckoutRequestID for this transaction is : " . $CheckoutRequestID;
+  echo "The CheckoutRequestID for this transaction is : " . $CheckoutRequestID;
 }
 
 ?>
