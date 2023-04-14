@@ -26,20 +26,18 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POST, true);
 echo curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
 echo $curl_response = curl_exec($curl);
-//$data_to = json_decode($curl_response);
-//if (isset($data_to->ResultCode)) {
-  //$ResultCode = $data_to->ResultCode;
-  //if ($ResultCode == '1037') {
-   // $massage = "1037 Timeout in completing transaction";
-  //} elseif ($ResultCode == '1032') {
-  // $massage = "1032 Transaction  has cancelled by user";
- // } elseif ($ResultCode == '1') {
-   // $massage = "1 The balance is insufficient for the transaction";
-  //} elseif ($ResultCode == '0') {
-   // $massage = "0 The transaction is successfully";
- // }
-//}
-
-//echo $massage;
-
+$data_to = json_decode($curl_response);
+if (isset($data_to->ResultCode)) {
+  $ResultCode = $data_to->ResultCode;
+  if ($ResultCode == '1037') {
+   $massage = "1037 Timeout in completing transaction";
+  } elseif ($ResultCode == '1032') {
+   $massage = "1032 Transaction  has cancelled by user";
+  } elseif ($ResultCode == '1') {
+    $massage = "1 The balance is insufficient for the transaction";
+  } elseif ($ResultCode == '0') {
+    $massage = "0 The transaction is successfully";
+ }
+}
+echo $massage;
 ?>
